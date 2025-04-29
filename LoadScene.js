@@ -12,6 +12,7 @@ class LoadScene extends Phaser.Scene {
     });
 
     this.load.image("enemy1", "assets/gameObjects/enemy1.png");
+    this.load.image("enemyBullet", "assets/gameObjects/enemyBullet.png");
   }
 
   create() {

@@ -18,17 +18,16 @@ class Level1 extends Phaser.Scene {
     this.enemy1 = this.add.sprite(config.width / 2 - 50, -100, "enemy1");
     this.enemy1.setScale(5); 
     this.enemy1.setInteractive();
+
+    //Group creation
+    this.projectiles = this.physics.add.group();
     this.enemies = this.physics.add.group(); 
-    
+
     this.spawnEnemy(128, -50, "enemy1", 275, 150, 3000, 145);
     this.spawnEnemy(512, -50, "enemy1", 275, 150, 3000, -145);
   }
 
   update() {
-    this.background.tilePositionY -= 0.5;
-    this.movePlayerManager();
-    this.energyStorageManager();
-    
     this.background.tilePositionY -= 0.5;
     this.movePlayerManager();
     this.energyStorageManager();
@@ -72,6 +71,10 @@ class Level1 extends Phaser.Scene {
         enemy.setVelocityY(0);
         enemy.setVelocityX(pattern.xSpeed);
 
+        this.time.delayedCall(pattern.pauseTime / 2, () => {
+          this.shootEnemyBullet(enemy);
+        }, null, this);
+        
         this.timerEvent = this.time.addEvent({
           delay: pattern.pauseTime,
           callback: () => {
@@ -86,6 +89,17 @@ class Level1 extends Phaser.Scene {
         });
       }
     
+  }
+
+  shootEnemyBullet(enemy) {
+    const bullet = new enemyBullet(this, enemy);
+    this.projectiles.add(bullet); 
+  }
+  
+
+  straightFirePattern()
+  {
+
   }
 
   movePlayerManager() {
