@@ -1,7 +1,18 @@
+var gameSettings = {
+  playerSpeed: 400,
+  maxPowerups: 2,
+  powerUpVel: 50,
+}
+
 let config = {
   type:Phaser.AUTO,
-  width:288,
-  height:512,
+  parent: 'game-container',
+  width:640,
+  height:1280,
+  pixelArt: true,
+  scale: {
+    mode: Phaser.Scale.FIT
+  },
   physics: {
     default: "arcade",
     arcade: {
@@ -9,37 +20,7 @@ let config = {
       debug:false,
     },
   },
-  scene: {
-    preload:preload,
-    create: create,
-    update: update,
-  },
+  scene: [LoadScene, Level1]
 };
 
-let isGameOver = false;
-let score = 0;
-let scoreText;
-let isRefresh =false;
-let hitPlayed= false;
-let diePlayed = false;
-let character;
-let base;
-let baseImage;
-let baseHeight;
-let baseWidth;
-let speed = -150;
-let spawnTime = 1500;
-let gameStart = false;
 let game = new Phaser.Game(config);
-
-function preload() {
-  //Load assets here
-}
-
-function create() {
-
-}
-
-function update() {
-  
-}
