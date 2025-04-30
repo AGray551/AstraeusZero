@@ -10,7 +10,6 @@ class enemyBullet extends Phaser.GameObjects.Sprite {
     this.body.setAllowGravity(false); 
 
     scene.physics.moveToObject(this, player, 500);
-    console.log(this);
   }
 
   update() {
