@@ -2,6 +2,7 @@ class Level1 extends Phaser.Scene {
   constructor() {
     super("Level1");
     this.enemyPaused = false;
+    this.shotFired = false;
   }
 
   create() {
@@ -20,8 +21,8 @@ class Level1 extends Phaser.Scene {
     this.enemy1.setInteractive();
 
     //Group creation
-    this.projectiles = this.physics.add.group();
     this.enemies = this.physics.add.group(); 
+    this.projectiles = this.add.group();
 
     this.spawnEnemy(128, -50, "enemy1", 275, 150, 3000, 145);
     this.spawnEnemy(512, -50, "enemy1", 275, 150, 3000, -145);
@@ -35,6 +36,10 @@ class Level1 extends Phaser.Scene {
     this.enemies.getChildren().forEach(enemy => {
       this.LShapedPattern(enemy);
     });
+
+    this.projectiles.getChildren().forEach(bullet => {
+      bullet.update(); // ensure it checks for bounds and self-destroys
+    });
   }
 
   spawnEnemy(xSpawn, ySpawn, spriteKey, ySpeed, distance, pauseTime, xSpeed) {
@@ -47,6 +52,7 @@ class Level1 extends Phaser.Scene {
       pauseTime: pauseTime,
       xSpeed: xSpeed,
       hasPaused: false,
+      hasFired: false,
       hasResumed: false
     };
   
@@ -71,9 +77,18 @@ class Level1 extends Phaser.Scene {
         enemy.setVelocityY(0);
         enemy.setVelocityX(pattern.xSpeed);
 
-        this.time.delayedCall(pattern.pauseTime / 2, () => {
-          this.shootEnemyBullet(enemy);
-        }, null, this);
+        this.timerEvent = this.time.addEvent({
+          delay: pattern.pauseTime / 2,
+          callback: () => {
+            if (!pattern.hasFired)
+            {
+              this.shootEnemyBullet(enemy);
+              pattern.hasFired = true;
+            }
+          },
+          callbackScope: this, 
+          loop: false
+        });
         
         this.timerEvent = this.time.addEvent({
           delay: pattern.pauseTime,
@@ -92,8 +107,8 @@ class Level1 extends Phaser.Scene {
   }
 
   shootEnemyBullet(enemy) {
-    const bullet = new enemyBullet(this, enemy);
-    this.projectiles.add(bullet); 
+    const bullet = new enemyBullet(this, enemy, this.playerShip);
+    this.projectiles.add(bullet);
   }
   
 
@@ -119,6 +134,11 @@ class Level1 extends Phaser.Scene {
     if (this.cursorKeys.up.isDown) {
       this.playerShip.setVelocityY(-gameSettings.playerSpeed);
     } else if (this.cursorKeys.down.isDown) {
+      this.playerShip.setVelocityY(gameSettings.playerSpeed);
+    }
+
+    if (this.cursorKeys.f.isDown)
+    {
       this.playerShip.setVelocityY(gameSettings.playerSpeed);
     }
   }

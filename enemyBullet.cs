@@ -1,21 +1,21 @@
 class enemyBullet extends Phaser.GameObjects.Sprite {
-    constructor(scene, enemy) {
+  constructor(scene, enemy, player) {
+    super(scene, enemy.x, enemy.y, "enemyBullet");
 
-        var x = enemy.x;
-        var y = enemy.y;
+    scene.add.existing(this);
+    this.setScale(6.5);
 
-        super(scene, x, y, "enemyBullet");
-        scene.add.existing(this);
-        this.setScale(3);
+    scene.physics.world.enableBody(this);
+    this.body.setVelocity(0);
+    this.body.setAllowGravity(false); 
 
-        scene.physics.world.enableBody(this);
-        this.body.velocity.y = - 250;
+    scene.physics.moveToObject(this, player, 500);
+    console.log(this);
+  }
+
+  update() {
+    if (this.y < 32 || this.y > config.height || this.x < 0 || this.x > config.width) {
+      this.destroy();
     }
-
-    update(){
-  
-        if(this.y < 32 ){
-          this.destroy();
-        }
-    }
+  }
 }
