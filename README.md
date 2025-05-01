@@ -3,6 +3,8 @@ Astraeus Zero README
 Learning resources:  
 https://docs.phaser.io/phaser  
 https://www.youtube.com/playlist?list=PLDyH9Tk5ZdFzEu_izyqgPFtHJJXkc79no  
+https://developer.mozilla.org/en-US/docs/Web/API  
+
 Free Assets utilized from:  
 https://cluly.itch.io/space-eaters  
 https://piiixl.itch.io/space  
