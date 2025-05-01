@@ -18,7 +18,7 @@ class Enemy1 extends Phaser.Physics.Arcade.Sprite {
     scene.add.existing(this);
     this._timerEvent = null;
 
-    this.beamSound = scene.sound.add("audio_beam", { volume: 0.1, rate: 2 });
+    this.beamSound = scene.sound.add("audio_beam", { volume: 0.05, rate: 2 });
   }
 
 

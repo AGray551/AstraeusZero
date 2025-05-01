@@ -130,12 +130,12 @@ class Level1 extends Phaser.Scene {
     );
      
     //Audio setup
-    this.beamSound = this.sound.add("audio_beam", { volume: 0.1 }); 
-    this.explosionSound = this.sound.add("audio_explosion", { volume: 0.1 });
+    this.beamSound = this.sound.add("audio_beam", { volume: 0.05 }); 
+    this.explosionSound = this.sound.add("audio_explosion", { volume: 0.05 });
     this.music = this.sound.add("music");
       var musicConfig = {
           mute: false,
-          volume: 0.15,
+          volume: 0.05,
           rate: 1,
           detune: 0,
           seek: 0,
