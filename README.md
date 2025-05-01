@@ -1,9 +1,9 @@
-Astraeus Zero README
-=====================
-Assets taken from:
-https://robocelot.itch.io/ocunid-monster-sprite
-https://zintoki.itch.io/space-breaker
-https://gooseninja.itch.io/space-music-pack
-https://cluly.itch.io/space-eaters
-https://piiixl.itch.io/space
-https://ansimuz.itch.io/space-background
+Astraeus Zero README  
+=====================  
+Learning resources:  
+https://docs.phaser.io/phaser  
+https://www.youtube.com/playlist?list=PLDyH9Tk5ZdFzEu_izyqgPFtHJJXkc79no  
+Free Assets utilized from:  
+https://cluly.itch.io/space-eaters  
+https://piiixl.itch.io/space  
+https://ansimuz.itch.io/phaser-tutorial-excercise-sound  

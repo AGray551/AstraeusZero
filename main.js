@@ -97,7 +97,7 @@ let config = {
       debug:false,
     },
   },
-  scene: [LoadScene, Level1]
+  scene: [LoadScene, StartMenu, Level1, WinScreen]
 };
 
 let game = new Phaser.Game(config);
