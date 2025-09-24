@@ -11,4 +11,4 @@ https://piiixl.itch.io/space
 https://ansimuz.itch.io/phaser-tutorial-excercise-sound  
 
 Image test:
-![Alt text](images/myimage.png)
+![Alt text](assets/gameObjects/Enemy1.png)
