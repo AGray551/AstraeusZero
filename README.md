@@ -9,3 +9,6 @@ Free Assets utilized from:
 https://cluly.itch.io/space-eaters  
 https://piiixl.itch.io/space  
 https://ansimuz.itch.io/phaser-tutorial-excercise-sound  
+
+Image test:
+![Alt text](images/myimage.png)
